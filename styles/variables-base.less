@@ -217,16 +217,20 @@
 @agate-item-font-size: inherit;
 @agate-item-font-weight: inherit;
 @agate-item-label-font-size: @agate-base-font-size;
-@agate-item-height: inherit;
-@agate-item-side-outset: inherit;
-@agate-item-side-outset: inherit;
-@agate-item-height: inherit;
-@agate-item-height-large: inherit;
-@agate-item-vertical-padding: inherit;
-@agate-item-line-height: inherit;
-@agate-item-line-height-large: inherit;
+@agate-item-side-outset: @agate-spotlight-outset;
+@agate-item-height: 60px;
+@agate-item-height-large: 72px;
+@agate-item-vertical-padding: 3px;
+@agate-item-line-height: @agate-item-height - (@agate-item-vertical-padding * 2);
+@agate-item-line-height-large: @agate-item-height-large - (@agate-item-vertical-padding * 2);
 @agate-item-indent: inherit;
 @agate-item-border-width: inherit;
+@agate-item-medium-border-width: inherit;
+@agate-item-medium-font-size: inherit;
+@agate-item-medium-font-weight: inherit;
+@agate-item-medium-height: 48px;
+@agate-item-medium-line-height: inherit;
+@agate-item-medium-side-outset: inherit;
 
 // Panels
 // ---------------------------------------

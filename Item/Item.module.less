@@ -24,24 +24,32 @@
 		}
 	}
 
-	.slotAfter {
-		display: flex;
-		justify-content: center;
-	}
-
+	.slotAfter,
 	.slotBefore {
 		display: flex;
 		justify-content: center;
 	}
 
 	.applySkins({
-		.agate-item-sizing();
-
-		line-height: @agate-item-line-height;
-		border-style: solid;
-		border-width: @agate-item-border-width;
-		border-color: @agate-item-border-color;
 		color: @agate-item-color;
+
+		&.large {
+			font-size: @agate-item-font-size;
+			font-weight: @agate-item-font-weight;
+			line-height: @agate-item-height;
+			line-height: @agate-item-line-height;
+			padding-left: @agate-item-side-outset;
+			padding-right: @agate-item-side-outset;
+		}
+
+		&.medium {
+			font-size: @agate-item-medium-font-size;
+			font-weight: @agate-item-medium-font-weight;
+			height: @agate-item-medium-height;
+			line-height: @agate-item-medium-line-height;
+			padding-left: @agate-item-medium-side-outset;
+			padding-right: @agate-item-medium-side-outset;
+		}
 
 		.itemContent {
 			.label   {

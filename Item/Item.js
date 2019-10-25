@@ -94,15 +94,19 @@ const ItemBase = kind({
 		label: PropTypes.node,
 		labelPosition: PropTypes.oneOf(['above', 'after', 'before', 'below']),
 		selected: PropTypes.bool,
+		size: PropTypes.oneOf(['medium', 'large']),
 		slotAfter: PropTypes.node,
 		slotBefore: PropTypes.node
 	},
+	defaultProps: {
+		size: 'large'
+	},
 	styles: {
 		css: componentCss,
-		publicClassNames: ['item']
+		publicClassNames: ['item', 'medium', 'large']
 	},
 	computed: {
-		className: ({selected, styler}) => styler.append({selected})
+		className: ({size, selected, styler}) => styler.append(size, {selected})
 	},
 	render: ({children, componentRef, css, label, labelPosition, slotAfter, slotBefore, ...rest}) => {
 		return (
