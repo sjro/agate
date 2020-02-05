@@ -8,6 +8,8 @@ install:
     - npm install --force enactjs/docs-utils#feature/test-branch
 
 script:
+    - grep -r -l "@module"  --exclude-dir={build,node_modules,sampler,samples,tests,dist,coverage} --include=*.js
+    - grep -r -l "@module"  --exclude-dir={build,node_modules,sampler,samples,tests,dist,coverage} --include=\*.js
     - npm run lint -- -- --max-warnings 0 .
     - npm run test
     - echo -e "\x1b\x5b35;1m*** Starting docs validation...\x1b\x5b0m"
