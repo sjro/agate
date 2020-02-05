@@ -5,6 +5,7 @@ sudo: false
 install:
     - npm install -g enactjs/cli#develop
     - npm install
+    - npm install --force enactjs/docs-utils#feature/test-branch
 
 script:
     - npm run lint -- -- --max-warnings 0 .
