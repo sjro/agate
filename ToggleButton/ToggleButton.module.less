@@ -20,25 +20,38 @@
 		&.underline {
 			&::after {
 				content: "";
+
+				background-color: #777777;
+				border-color: transparent;
+				position: absolute;
+				left: 30px;
+				height: 15px;
+				width: 15px;
+				border-radius: 50%;
+				top: 50%;
+				transform: translateY(-50%);
 			}
 		}
 
 		&.selected {
 			&::after {
-				background-color: @agate-togglebutton-indicator-on-bg-color;
+				// background-color: @agate-togglebutton-indicator-on-bg-color;
+				background-color: #ff2d55;
 				border-color: @agate-togglebutton-indicator-on-border-color;
 			}
 		}
 
 		.focus({
 			&::after {
-				background-color: @agate-togglebutton-indicator-off-focus-bg-color;
+				// background-color: @agate-togglebutton-indicator-off-focus-bg-color;
+				background-color: #777777;
 				border-color: @agate-togglebutton-indicator-off-focus-border-color;
 			}
 
 			&.selected {
 				&::after {
-					background-color: @agate-togglebutton-indicator-on-focus-bg-color;
+					// background-color: @agate-togglebutton-indicator-on-focus-bg-color;
+					background-color: #ff2d55;
 					border-color: @agate-togglebutton-indicator-on-focus-border-color;
 				}
 			}
