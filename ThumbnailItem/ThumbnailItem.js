@@ -97,11 +97,9 @@ const ThumbnailItemBase = kind({
 		})
 	},
 
-	render: ({css, children, label, src, ...rest}) => {
+	render: ({css, children, src, ...rest}) => {
 		return (
-			<Item
-				{...rest}
-			>
+			<Item {...rest} css={css}>
 				<slotBefore className={css.slotBefore}>
 					<img
 						className={css.thumbnail}
@@ -110,9 +108,6 @@ const ThumbnailItemBase = kind({
 				</slotBefore>
 				<div className={css.content}>
 					{children}
-				</div>
-				<div className={css.subContent}>
-					{label}
 				</div>
 			</Item>
 		);
