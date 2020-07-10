@@ -19,6 +19,7 @@ import {handle, forward, forProp} from '@enact/core/handle';
 import kind from '@enact/core/kind';
 import SpotlightContainerDecorator from '@enact/spotlight/SpotlightContainerDecorator';
 import Changeable from '@enact/ui/Changeable';
+import ComponentOverride from '@enact/ui/ComponentOverride';
 import Group from '@enact/ui/Group';
 import Toggleable from '@enact/ui/Toggleable';
 import Transition from '@enact/ui/Transition';
@@ -198,21 +199,28 @@ const DropdownBase = kind({
 
 	render: ({children, css, dropdownButtonClassname, dropdownListClassname, disabled, hasChildren, onClose, onOpen, onSelect, open, selected, skin, transitionContainerClassname, transitionDirection, title, ...rest}) => {
 		const opened = !disabled && open;
-		const dropdownButton = (skin === 'silicon');
+		const [DropDownButton, wrapperProps, groupProps] = (skin === 'silicon') ? [
+			Button,
+			{className: dropdownButtonClassname, component: 'div'},
+			{childComponent: RadioItem, className: css.dropDownListItem, css, itemProps: {size: 'small', selectedProp: 'selected'}}
+		] : [
+			Item,
+			{component: React.Fragment},
+			{childComponent: Item, itemProps: {size: 'small'}}
+		];
 
 		return (
 			<div {...rest}>
-				{dropdownButton &&
-				<div className={dropdownButtonClassname}>
-					<Button
+				<ComponentOverride {...wrapperProps}>
+					<DropDownButton
 						{...rest}
 						css={css}
 						disabled={hasChildren ? disabled : true}
 						onClick={opened ? onClose : onOpen}
 					>
-						{title}
 						<Icon slot="slotAfter" className={css.icon} size="small">{open ? 'arrowlargeup' : 'arrowlargedown'}</Icon>
-					</Button>
+						{title}
+					</DropDownButton>
 					<Transition
 						className={transitionContainerClassname}
 						visible={opened}
@@ -222,51 +230,16 @@ const DropdownBase = kind({
 							<Scroller className={css.scroller}>
 								<Group
 									className={css.group}
-									childComponent={RadioItem}
-									itemProps={{size: 'small', className: css.dropDownListItem, css: css}}
 									onSelect={onSelect}
 									selected={selected}
-									selectedProp="selected"
+									{...groupProps}
 								>
 									{children || []}
 								</Group>
 							</Scroller>
 						</ContainerDiv>
 					</Transition>
-				</div>
-				}
-				{!dropdownButton &&
-					<React.Fragment>
-						<Item
-							{...rest}
-							css={css}
-							disabled={hasChildren ? disabled : true}
-							onClick={opened ? onClose : onOpen}
-						>
-							<Icon slot="slotAfter" className={css.icon} size="small">{open ? 'arrowlargeup' : 'arrowlargedown'}</Icon>
-							{title}
-						</Item>
-						<Transition
-							className={transitionContainerClassname}
-							visible={opened}
-							direction={transitionDirection}
-						>
-							<ContainerDiv className={dropdownListClassname} spotlightDisabled={!open} spotlightRestrict="self-only">
-								<Scroller className={css.scroller}>
-									<Group
-										className={css.group}
-										childComponent={Item}
-										itemProps={{size: 'small'}}
-										onSelect={onSelect}
-										selected={selected}
-									>
-										{children || []}
-									</Group>
-								</Scroller>
-							</ContainerDiv>
-						</Transition>
-					</React.Fragment>
-				}
+				</ComponentOverride>
 			</div>
 		);
 	}
