@@ -11,7 +11,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import Button from '../Button';
-import Input from '../Input';
 
 import $L from '../internal/$L';
 
@@ -111,18 +110,18 @@ const KeypadBase = kind({
 
 	render: ({handleInputValue, disabled, ...rest}) => {
 		return (
-			<Layout align="center end" wrap {...rest} inline className={css.keypad}>
+			<Layout {...rest} align="center end" className={css.keypad} inline wrap>
 				{KEY_LIST.map((keyText, rowIndex) => {
 					return (
 						<Cell
 							aria-label={keyText.text === 'arrowleftturn' ? $L('Back Space') : keyText.text}
-							shrink
 							component={Key}
 							disabled={disabled}
 							key={`key${rowIndex}-${keyText.text}`}
 							onKeyButtonClick={() => handleInputValue(keyText.text)}
-							text={keyText.text === 'arrowleftturn' || keyText.text === 'phone' ? null : keyText.text}
+							shrink
 							subtext={keyText.subtext}
+							text={keyText.text === 'arrowleftturn' || keyText.text === 'phone' ? null : keyText.text}
 						>
 							{keyText.text === 'arrowleftturn' || keyText.text === 'phone' ? keyText.text : null}
 						</Cell>
@@ -147,21 +146,17 @@ class Keypad extends React.Component {
 	static propTypes = /** @lends agate/Keypad.prototype */ {
 		disabled: PropTypes.bool,
 		handleInputValue: PropTypes.func,
+		onChange: PropTypes.func,
 		value: PropTypes.string
 	}
 
 	constructor (props) {
 		super(props);
+
 		this.state = {
 			keypadInput: '',
 			charIndex: 0
 		};
-	}
-
-	getCharIndex = (e) => {
-		this.setState({
-			charIndex: e.target.selectionStart
-		});
 	}
 
 	handleInputValue = (keyValue) => {
@@ -231,29 +226,21 @@ class Keypad extends React.Component {
 				break;
 		}
 
+		if (keypadInput !== newKeypadInput) {
+			this.props.onChange({value: newKeypadInput});
+		}
+
 		this.setState({
 			keypadInput: newKeypadInput
 		});
 	};
 
 	render () {
-		const {handleInputValue, getCharIndex} = this,
-			{disabled} = this.props,
-			{keypadInput} = this.state;
+		const {handleInputValue} = this;
+		const {disabled} = this.props;
 
 		return (
-			<React.Fragment>
-				<KeypadBase handleInputValue={handleInputValue} disabled={disabled} />
-				<Input
-					className={css.keypadInput}
-					css={css}
-					onClick={getCharIndex}
-					onKeyDown={(e) => handleInputValue(e.key)}
-					onKeyUp={getCharIndex}
-					type="tel"
-					value={keypadInput}
-				/>
-			</React.Fragment>
+			<KeypadBase handleInputValue={handleInputValue} disabled={disabled} />
 		);
 	}
 }
