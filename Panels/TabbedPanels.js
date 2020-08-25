@@ -90,8 +90,10 @@ const TabbedPanelsBase = kind({
 		tabs,
 		...rest
 	}) => {
+		const label = tabs[index].title || tabs[index].children;
+
 		return (
-			<Layout {...rest}>
+			<Layout aria-label={label} role="region" {...rest}>
 				<Cell shrink>
 					<TabGroup
 						afterTabs={afterTabs}
