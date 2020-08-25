@@ -9,6 +9,7 @@
  * @exports CheckboxBase
  */
 
+import hoc from '@enact/core/hoc';
 import kind from '@enact/core/kind';
 import Spottable from '@enact/spotlight/Spottable';
 import Toggleable from '@enact/ui/Toggleable';
@@ -28,7 +29,7 @@ const ToggleIconDecorator = compose(
 	Skinnable
 );
 
-const ToggleIcon = ToggleIconBase; // ToggleIconDecorator(ToggleIconBase);
+const ToggleIcon = ToggleIconDecorator(ToggleIconBase);
 
 /**
  * A checkbox component, ready to use in Agate applications.
@@ -63,10 +64,11 @@ const CheckboxBase = kind({
 	},
 
 	defaultProps: {
-		children: 'check'
+		children: 'check',
+		toggleIcon: ToggleIconBase
 	},
 
-	render: ({children, ...rest}) => {
+	render: ({children, toggleIcon: ToggleIcon, ...rest}) => {
 		return (
 			<ToggleIcon
 				{...rest}
@@ -79,8 +81,16 @@ const CheckboxBase = kind({
 	}
 });
 
+const CheckboxDecorator = hoc((config, Wrapped) => {
+	return (props) => {
+		return <Wrapped {...props} toggleIcon={ToggleIcon} />
+	};
+});
+
+const Checkbox = CheckboxDecorator(CheckboxBase);
+
 export default CheckboxBase;
 export {
-	CheckboxBase as Checkbox,
+	Checkbox,
 	CheckboxBase
 };
