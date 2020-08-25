@@ -28,7 +28,7 @@ const ToggleIconDecorator = compose(
 	Skinnable
 );
 
-const ToggleIcon = ToggleIconDecorator(ToggleIconBase);
+const ToggleIcon = ToggleIconBase; // ToggleIconDecorator(ToggleIconBase);
 
 /**
  * A checkbox component, ready to use in Agate applications.
