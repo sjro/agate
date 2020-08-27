@@ -105,6 +105,11 @@ const HeaderBase = kind({
 	},
 
 	computed: {
+		'aria-label': ({title, subtitle}) => {
+			return (subtitle != null && subtitle !== '') ?
+				title + ' ' + subtitle :
+				title;
+		},
 		className: ({hideLine, styler}) => styler.append({hideLine, standard: true}),
 		subtitleComponent: ({css, subtitle}) => {
 			return (subtitle != null && subtitle !== '') ? <h2 className={css.subtitle}>{subtitle}</h2> : null;
@@ -114,13 +119,13 @@ const HeaderBase = kind({
 		}
 	},
 
-	render: ({children, css, title, titleAboveComponent, subtitleComponent, ...rest}) => {
+	render: ({'aria-label': ariaLabel, children, css, title, titleAboveComponent, subtitleComponent, ...rest}) => {
 		delete rest.hideLine;
 		delete rest.subtitle;
 		delete rest.titleAbove;
 
 		return (
-			<Row component="header" aria-label={title} {...rest}>
+			<Row component="header" aria-label={ariaLabel} {...rest}>
 				<Column className={css.titleContainer}>
 					{titleAboveComponent}
 					<h1 className={css.title}>{title}</h1>
