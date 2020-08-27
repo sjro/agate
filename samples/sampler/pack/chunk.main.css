@@ -12565,7 +12565,6 @@ body {
   z-index: 1;
   pointer-events: none;
   min-width: 13rem;
-  width: 100%;
 }
 .ColorPicker_colorPicker__3VbcX .ColorPicker_transitionContainer__XRheV.ColorPicker_openTransitionContainer__3NM-Y {
   pointer-events: inherit;
@@ -12579,6 +12578,9 @@ body {
 .ColorPicker_colorPicker__3VbcX.ColorPicker_extended__305Uw .ColorPicker_sliders__12uJ5 {
   display: block;
 }
+.ColorPicker_colorPicker__3VbcX.carbon .ColorPicker_transitionContainer__XRheV {
+  width: calc(100% - 3.5rem - 2*0.5rem);
+}
 .ColorPicker_colorPicker__3VbcX.carbon .ColorPicker_palette__2e3ci {
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 3.5rem;
@@ -12590,6 +12592,9 @@ body {
 }
 .ColorPicker_colorPicker__3VbcX.carbon .ColorPicker_palette__2e3ci .ColorPicker_sliders__12uJ5 {
   padding: 0.5rem 0.5rem 1rem 0.5rem;
+}
+.ColorPicker_colorPicker__3VbcX.cobalt .ColorPicker_transitionContainer__XRheV {
+  width: calc(100% - 3.5rem - 2*0.5rem);
 }
 .ColorPicker_colorPicker__3VbcX.cobalt .ColorPicker_palette__2e3ci {
   background-color: #ededed;
@@ -12603,6 +12608,9 @@ body {
 .ColorPicker_colorPicker__3VbcX.cobalt .ColorPicker_palette__2e3ci .ColorPicker_sliders__12uJ5 {
   padding: 0.5rem 0.5rem 1rem 0.5rem;
 }
+.ColorPicker_colorPicker__3VbcX.cobalt.night .ColorPicker_transitionContainer__XRheV {
+  width: calc(100% - 3.5rem - 2*0.5rem);
+}
 .ColorPicker_colorPicker__3VbcX.cobalt.night .ColorPicker_palette__2e3ci {
   background-color: #44559f;
   border-radius: 1.75rem;
@@ -12614,6 +12622,9 @@ body {
 }
 .ColorPicker_colorPicker__3VbcX.cobalt.night .ColorPicker_palette__2e3ci .ColorPicker_sliders__12uJ5 {
   padding: 0.5rem 0.5rem 1rem 0.5rem;
+}
+.ColorPicker_colorPicker__3VbcX.copper .ColorPicker_transitionContainer__XRheV {
+  width: calc(100% - 3.5rem - 2*0.5rem);
 }
 .ColorPicker_colorPicker__3VbcX.copper .ColorPicker_palette__2e3ci {
   background-color: #ededed;
@@ -12627,6 +12638,9 @@ body {
 .ColorPicker_colorPicker__3VbcX.copper .ColorPicker_palette__2e3ci .ColorPicker_sliders__12uJ5 {
   padding: 0.5rem 0.5rem 1rem 0.5rem;
 }
+.ColorPicker_colorPicker__3VbcX.copper.night .ColorPicker_transitionContainer__XRheV {
+  width: calc(100% - 3.5rem - 2*0.5rem);
+}
 .ColorPicker_colorPicker__3VbcX.copper.night .ColorPicker_palette__2e3ci {
   background-color: #373739;
   border-radius: 1.75rem;
@@ -12638,6 +12652,9 @@ body {
 }
 .ColorPicker_colorPicker__3VbcX.copper.night .ColorPicker_palette__2e3ci .ColorPicker_sliders__12uJ5 {
   padding: 0.5rem 0.5rem 1rem 0.5rem;
+}
+.ColorPicker_colorPicker__3VbcX.electro .ColorPicker_transitionContainer__XRheV {
+  width: calc(100% - 3.5rem - 2*0.5rem);
 }
 .ColorPicker_colorPicker__3VbcX.electro .ColorPicker_palette__2e3ci {
   background-color: rgba(0, 0, 0, 0.5);
@@ -12651,6 +12668,9 @@ body {
 .ColorPicker_colorPicker__3VbcX.electro .ColorPicker_palette__2e3ci .ColorPicker_sliders__12uJ5 {
   padding: 0.25rem 0.25rem 0.5rem 0.25rem;
 }
+.ColorPicker_colorPicker__3VbcX.gallium .ColorPicker_transitionContainer__XRheV {
+  width: calc(100% - 3.5rem - 2*0.5rem);
+}
 .ColorPicker_colorPicker__3VbcX.gallium .ColorPicker_palette__2e3ci {
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 3.5rem;
@@ -12662,6 +12682,9 @@ body {
 }
 .ColorPicker_colorPicker__3VbcX.gallium .ColorPicker_palette__2e3ci .ColorPicker_sliders__12uJ5 {
   padding: 0.5rem 0.5rem 1rem 0.5rem;
+}
+.ColorPicker_colorPicker__3VbcX.gallium.night .ColorPicker_transitionContainer__XRheV {
+  width: calc(100% - 3.5rem - 2*0.5rem);
 }
 .ColorPicker_colorPicker__3VbcX.gallium.night .ColorPicker_palette__2e3ci {
   background-color: rgba(0, 0, 0, 0.5);
@@ -12675,6 +12698,9 @@ body {
 .ColorPicker_colorPicker__3VbcX.gallium.night .ColorPicker_palette__2e3ci .ColorPicker_sliders__12uJ5 {
   padding: 0.5rem 0.5rem 1rem 0.5rem;
 }
+.ColorPicker_colorPicker__3VbcX.silicon .ColorPicker_transitionContainer__XRheV {
+  width: calc(100% - 3.125rem - 2*0.5rem);
+}
 .ColorPicker_colorPicker__3VbcX.silicon .ColorPicker_palette__2e3ci {
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 3.125rem;
@@ -12687,6 +12713,9 @@ body {
 .ColorPicker_colorPicker__3VbcX.silicon .ColorPicker_palette__2e3ci .ColorPicker_sliders__12uJ5 {
   padding: 0.5rem 0.5rem 1rem 0.5rem;
 }
+.ColorPicker_colorPicker__3VbcX.silicon.night .ColorPicker_transitionContainer__XRheV {
+  width: calc(100% - 3.125rem - 2*0.5rem);
+}
 .ColorPicker_colorPicker__3VbcX.silicon.night .ColorPicker_palette__2e3ci {
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 3.125rem;
@@ -12698,6 +12727,9 @@ body {
 }
 .ColorPicker_colorPicker__3VbcX.silicon.night .ColorPicker_palette__2e3ci .ColorPicker_sliders__12uJ5 {
   padding: 0.5rem 0.5rem 1rem 0.5rem;
+}
+.ColorPicker_colorPicker__3VbcX.titanium .ColorPicker_transitionContainer__XRheV {
+  width: calc(100% - 3.5rem - 2*0.5rem);
 }
 .ColorPicker_colorPicker__3VbcX.titanium .ColorPicker_palette__2e3ci {
   background-color: #ddd;
