@@ -64,7 +64,11 @@ const ViewportBase = class extends React.Component {
 		 * @type {Number}
 		 * @default 0
 		 */
+		end: PropTypes.number,
+
 		index: PropTypes.number,
+
+		noAnimation: PropTypes.bool,
 
 		/**
 		 * Disable panel transitions
@@ -72,7 +76,7 @@ const ViewportBase = class extends React.Component {
 		 * @type {Boolean}
 		 * @default false
 		 */
-		noAnimation: PropTypes.bool,
+		orientation: PropTypes.string,
 
 		/**
 		 * Direction of the animation when transitioning between `Panel` components.
@@ -87,7 +91,7 @@ const ViewportBase = class extends React.Component {
 		 * @type {String}
 		 * @public
 		 */
-		orientation: PropTypes.string
+		start: PropTypes.number
 	};
 
 	static defaultProps = {
@@ -191,7 +195,7 @@ const ViewportBase = class extends React.Component {
 	getEnteringProp = (noAnimation) => noAnimation ? null : 'hideChildren';
 
 	render () {
-		const {children, duration, generateId, index, noAnimation, ...rest} = this.props;
+		const {children, duration, generateId, index, noAnimation, start, end, ...rest} = this.props;
 		const arranger = this.getArranger();
 		const enteringProp = this.getEnteringProp(noAnimation);
 		const mappedChildren = this.mapChildren(children, generateId);
@@ -219,6 +223,8 @@ const ViewportBase = class extends React.Component {
 				noAnimation={noAnimation}
 				onTransition={this.handleTransition}
 				onWillTransition={this.handleWillTransition}
+				start={start}
+				end={end}
 			>
 				{mappedChildren}
 			</ViewManager>

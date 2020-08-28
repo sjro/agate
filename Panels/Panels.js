@@ -195,7 +195,16 @@ const PanelsBase = kind({
 		 * @type {String}
 		 * @public
 		 */
-		orientation: PropTypes.oneOf(['horizontal', 'vertical'])
+		orientation: PropTypes.oneOf(['horizontal', 'vertical']),
+
+		/**
+		 * Indicates the panels will be rendered side-by-side.
+		 *
+		 * @type {Boolean}
+		 * @default false
+		 * @public
+		 */
+		sideBySide: PropTypes.bool
 	},
 
 	defaultProps: {
@@ -204,7 +213,8 @@ const PanelsBase = kind({
 		index: 0,
 		noAnimation: false,
 		noCloseButton: false,
-		noSharedState: false
+		noSharedState: false,
+		sideBySide: false
 	},
 
 	styles: {
@@ -214,7 +224,7 @@ const PanelsBase = kind({
 	},
 
 	computed: {
-		childProps: ({childProps, controls, id, noCloseButton}) => {
+		childProps: ({childProps, controls, id, sideBySide, noCloseButton}) => {
 			if ((noCloseButton && !controls) || !id) {
 				return childProps;
 			}
@@ -227,6 +237,9 @@ const PanelsBase = kind({
 				updatedChildProps['aria-owns'] = `${owns} ${controlsId}`;
 			} else {
 				updatedChildProps['aria-owns'] = controlsId;
+			}
+			if (sideBySide) {
+				updatedChildProps.sideBySide = true;
 			}
 
 			return updatedChildProps;
@@ -241,7 +254,15 @@ const PanelsBase = kind({
 			'--agate-panels-controls-width': controlsMeasurements.width + 'px'
 		} : style),
 
-		viewportId: ({id}) => id && `${id}-viewport`
+		viewportId: ({id}) => id && `${id}-viewport`,
+
+		start: ({index}) => {
+			return index;
+		},
+
+		end: ({index, sideBySide}) => {
+			return sideBySide ? index + 1 : index;
+		}
 	},
 
 	render: ({
@@ -261,11 +282,14 @@ const PanelsBase = kind({
 		onApplicationClose,
 		orientation,
 		viewportId,
+		start,
+		end,
 		...rest
 	}) => {
 		delete rest.controlsMeasurements;
 		delete rest.cover;
 		delete rest.onBack;
+		delete rest.sideBySide;
 
 		const controlsId = getControlsId(id);
 
@@ -291,6 +315,8 @@ const PanelsBase = kind({
 					noAnimation={noAnimation}
 					noSharedState={noSharedState}
 					orientation={orientation}
+					start={start}
+					end={end}
 				>
 					{children}
 				</Viewport>

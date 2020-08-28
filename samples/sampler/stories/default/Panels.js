@@ -20,13 +20,13 @@ const FirstPanel = kind({
 	name: 'FirstPanel',
 
 	propTypes: {
-		onClick: PropTypes.func
+		onClickForward: PropTypes.func
 	},
 
-	render: ({onClick, ...rest}) => (
+	render: ({onClickForward, ...rest}) => (
 		<Panel {...rest}>
 			<Header title="First Panel" />
-			<Button onClick={onClick}>Click me</Button>
+			<Button onClick={onClickForward}>Forward</Button>
 		</Panel>
 	)
 });
@@ -34,10 +34,31 @@ const FirstPanel = kind({
 const SecondPanel = kind({
 	name: 'SecondPanel',
 
-	render: (props) => (
+	propTypes: {
+		onClickBackward: PropTypes.func,
+		onClickForward: PropTypes.func
+	},
+
+	render: ({onClickBackward, onClickForward, ...props}) => (
 		<Panel {...props}>
 			<Header title="Second Panel" />
-			<Button>Click me</Button>
+			<Button onClick={onClickBackward}>Backward</Button>
+			<Button onClick={onClickForward}>Forward</Button>
+		</Panel>
+	)
+});
+
+const ThirdPanel = kind({
+	name: 'ThirdPanel',
+
+	propTypes: {
+		onClickBackward: PropTypes.func
+	},
+
+	render: ({onClickBackward, ...props}) => (
+		<Panel {...props}>
+			<Header title="Third Panel" />
+			<Button onClick={onClickBackward}>Backward</Button>
 		</Panel>
 	)
 });
@@ -54,9 +75,11 @@ const BasicPanels = () => {
 			noCloseButton={boolean('noCloseButton', Config, false)}
 			onApplicationClose={action('onClose')}
 			onBack={goPrevious}
+			sideBySide={boolean('sideBySide', Config, false)}
 		>
-			<FirstPanel onClick={goNext} />
-			<SecondPanel />
+			<FirstPanel onClickForward={goNext} />
+			<SecondPanel onClickForward={goNext} onClickBackward={goPrevious} />
+			<ThirdPanel onClickBackward={goPrevious} />
 		</Panels>
 	);
 };

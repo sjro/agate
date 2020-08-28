@@ -93,7 +93,16 @@ const PanelBase = kind({
 		 * @default false
 		 * @public
 		 */
-		hideChildren: PropTypes.bool
+		hideChildren: PropTypes.bool,
+
+		/**
+		 * Indicates the panels will be rendered side-by-side.
+		 *
+		 * @type {Boolean}
+		 * @default false
+		 * @public
+		 */
+		sideBySide: PropTypes.bool
 	},
 
 	defaultProps: {
@@ -152,6 +161,10 @@ const PanelBase = kind({
 			body: true,
 			noHeader: !header,
 			visible: !hideChildren
+		}),
+
+		className: ({sideBySide, styler}) => styler.append({
+			'sideBySide': sideBySide
 		}),
 		// nulling headerId prevents the aria-labelledby relationship which is necessary to allow
 		// aria-label to take precedence
