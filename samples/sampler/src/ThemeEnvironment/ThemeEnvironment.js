@@ -24,13 +24,36 @@ const globalGroup = 'Global Knobs';
 
 const SkinFrame = Skinnable(kind({
 	name: 'SkinFrame',
+
+	propTypes: {
+		/**
+		 * Hides the Panel's body components.
+		 *
+		 * @type {Boolean}
+		 * @public
+		 */
+		hideChildren: PropTypes.bool,
+
+		/**
+		 * Spotlight Id.
+		 *
+		 * @type {String}
+		 * @private
+		 */
+		spotlightId: PropTypes.string
+	},
+
 	styles: {
 		css,
 		className: 'skinFrame'
 	},
-	render: (props) => (
-		<Row {...props} />
-	)
+
+	render: (props) => {
+		delete props.hideChildren;
+		delete props.spotlightId;
+
+		return (<Row {...props} />);
+	}
 }));
 
 const reloadPage = () => {
@@ -46,6 +69,7 @@ const PanelsBase = kind({
 		noScroller: PropTypes.bool,
 		noPanel: PropTypes.bool, // eslint-disable-line react/sort-prop-types
 		noPanels: PropTypes.bool, // eslint-disable-line react/sort-prop-types
+		spotlightId: PropTypes.string,
 		title: PropTypes.string
 	},
 
@@ -56,6 +80,8 @@ const PanelsBase = kind({
 
 	render: ({children, description, noScroller, noPanel, noPanels, title, ...rest}) => {
 		const Wrapper = noScroller ? 'div' : Scroller;
+
+		delete rest.spotlightId;
 
 		return (
 			!noPanels ? <Wrapper {...rest}>
