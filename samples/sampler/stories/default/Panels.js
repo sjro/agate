@@ -126,7 +126,6 @@ const BasicPanels = () => {
 	const [shouldShiftIndexes, setShouldShiftIndexes] = React.useState(false);
 	const [index, setIndex] = React.useState(0);
 	const [rightIndex, setRightIndex] = React.useState(1);
-	const goNext = () => setIndex(clamp(0, 3, index + 1));
 	const goPrevious = () => setIndex(clamp(0, 3, index - 1));
 
 	const goToProfiles = () => { setShouldShiftIndexes(!shouldShiftIndexes); setRightIndex(1)};
@@ -146,11 +145,9 @@ const BasicPanels = () => {
 			sideBySide={boolean('sideBySide', Config, true)}
 			//onSelectBreadcrumb={goPrevious}
 		>
-
 			<Panel id={0}>
 				<Header title="0. Settings" />
 				{/*<Button onClick={onClickForward}>Forward</Button>*/}
-
 				<div>
 					<Item onClick={goToProfiles}>1. Profiles</Item>
 					<Item onClick={goToDeviceSettings}>2. Device Settings</Item>
@@ -159,9 +156,9 @@ const BasicPanels = () => {
 			</Panel>
 
 
-			<Profiles onClickForward={goNext} onClickBackward={goPrevious} id={1} parentId={0} />
-			<DeviceSettings onClickBackward={goPrevious} onClickForward={goNext} id={2} parentId={0} />
-			<Sound onClickForward={goNext} onClickBackward={goPrevious} id={3} parentId={0} />
+			<Profiles  id={1} parentId={0} />
+			<DeviceSettings  id={2} parentId={0} />
+			<Sound  id={3} parentId={0} />
 		</Panels>
 	);
 };
