@@ -296,19 +296,19 @@ const PanelsBase = kind({
 
 		const controlsId = getControlsId(id);
 
-		const newChildren = children; //.filter(item => item.props.id === index || item.props.id === rightIndex);
+		const newChildren = children.filter(item => item.props.id === index || item.props.id === rightIndex);
 		console.log(children);
-		//newChildren.push(newChildren[0] );
-		//newChildren.push(newChildren[1]);
+		newChildren.push(newChildren[0]);
+		newChildren.push(newChildren[1]);
 
-		 // if(shouldShiftIndexes) {
-		 // 	index = 2;
-		 // 	rightIndex = 3;
-		 // }
-		 // else {
-			//  index = 0;
-			//  rightIndex = 2;
-		 // }
+		 if(shouldShiftIndexes) {
+		 	index = 2;
+		 	rightIndex = 3;
+		 }
+		 else {
+			 index = 0;
+			 rightIndex = 1;
+		 }
 
 		console.log(index);
 		console.log(rightIndex);
@@ -336,8 +336,8 @@ const PanelsBase = kind({
 					noAnimation={noAnimation}
 					noSharedState={noSharedState}
 					orientation={orientation}
-					start={0}
-					end={2}
+					start={index}
+					end={rightIndex}
 				>
 					{newChildren}
 				</Viewport>
