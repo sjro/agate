@@ -130,6 +130,10 @@ const PanelsBase = kind({
 		 */
 		index: PropTypes.number,
 
+		rightIndex: PropTypes.number,
+
+		shouldShiftIndexes: PropTypes.bool,
+
 		/**
 		 * Disables panel transitions.
 		 *
@@ -211,6 +215,8 @@ const PanelsBase = kind({
 		cover: 'full',
 		duration: 500,
 		index: 0,
+		rightIndex: 1,
+		shouldShiftIndexes: false,
 		noAnimation: false,
 		noCloseButton: false,
 		noSharedState: false,
@@ -256,12 +262,8 @@ const PanelsBase = kind({
 
 		viewportId: ({id}) => id && `${id}-viewport`,
 
-		start: ({index}) => {
-			return index;
-		},
-
-		end: ({index, sideBySide}) => {
-			return sideBySide ? index + 1 : index;
+		end: ({index, rightIndex, sideBySide}) => {
+			return sideBySide ? rightIndex: index;
 		}
 	},
 
@@ -276,13 +278,14 @@ const PanelsBase = kind({
 		generateId,
 		id,
 		index,
+		rightIndex,
 		noAnimation,
 		noCloseButton,
 		noSharedState,
 		onApplicationClose,
 		orientation,
+		shouldShiftIndexes,
 		viewportId,
-		start,
 		end,
 		...rest
 	}) => {
@@ -292,6 +295,24 @@ const PanelsBase = kind({
 		delete rest.sideBySide;
 
 		const controlsId = getControlsId(id);
+
+		const newChildren = children; //.filter(item => item.props.id === index || item.props.id === rightIndex);
+		console.log(children);
+		//newChildren.push(newChildren[0] );
+		//newChildren.push(newChildren[1]);
+
+		 // if(shouldShiftIndexes) {
+		 // 	index = 2;
+		 // 	rightIndex = 3;
+		 // }
+		 // else {
+			//  index = 0;
+			//  rightIndex = 2;
+		 // }
+
+		console.log(index);
+		console.log(rightIndex);
+		console.log(newChildren);
 
 		return (
 			<div {...rest} id={id}>
@@ -315,10 +336,10 @@ const PanelsBase = kind({
 					noAnimation={noAnimation}
 					noSharedState={noSharedState}
 					orientation={orientation}
-					start={start}
-					end={end}
+					start={0}
+					end={2}
 				>
-					{children}
+					{newChildren}
 				</Viewport>
 			</div>
 		);
