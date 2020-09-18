@@ -2,7 +2,7 @@
  * Agate styled button components and behaviors.
  *
  * @example
- * <Button>Hello Enact!</Button>
+ * <Button>Test blablalba Hello Enact!</Button>
  *
  * @module agate/Button
  * @exports Button
