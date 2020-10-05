@@ -93,7 +93,7 @@ const DrawerBase = kind({
  * @memberof agate/Drawer
  * @mixes ui/Slottable.Slottable
  * @mixes agate/Skinnable.Skinnable
- * @public
+ * @protected
  */
 const DrawerDecorator = compose(
 	Slottable({slots: ['header', 'footer']}),
