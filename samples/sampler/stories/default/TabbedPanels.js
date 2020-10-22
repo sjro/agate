@@ -51,7 +51,7 @@ storiesOf('Agate', module)
 						<beforeTabs>
 							<Button
 								aria-label={$L('Previous Tab')}
-								icon={orientation  === 'vertical' ? "arrowlargeleft" : "arrowlargeup"}
+								icon={orientation  === 'vertical' ? 'arrowlargeleft' : 'arrowlargeup'}
 								onClick={onBeforeTabs} // eslint-disable-line react/jsx-no-bind
 								size="small"
 								type="grid"
