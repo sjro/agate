@@ -219,6 +219,8 @@ const ViewportBase = class extends React.Component {
 				noAnimation={noAnimation}
 				onTransition={this.handleTransition}
 				onWillTransition={this.handleWillTransition}
+				start={index-1}
+				end={index}
 			>
 				{mappedChildren}
 			</ViewManager>
