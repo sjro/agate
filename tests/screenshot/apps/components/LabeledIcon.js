@@ -2,9 +2,7 @@ import LabeledIcon from '../../../../LabeledIcon';
 import React from 'react';
 
 const LabeledIconTests = [
-	<LabeledIcon />,
-	<LabeledIcon flip="horizontal" />,
-	<LabeledIcon icon="time" />
+	<LabeledIcon />
 ];
 
 export default LabeledIconTests;
