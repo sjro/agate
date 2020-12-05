@@ -30,6 +30,8 @@ import TooltipDecorator from '../TooltipDecorator';
 
 import componentCss from './Button.module.less';
 
+console.log('React.version in agate/Button: ', React.version);
+
 /**
  * A button component.
  *

@@ -15,6 +15,8 @@ import Scroller from '@enact/agate/Scroller';
 
 import css from './ThemeEnvironment.module.less';
 
+console.log('React.version in sampler: ', React.version);
+
 const globalGroup = 'Global Knobs';
 
 // const reloadPage = () => {
