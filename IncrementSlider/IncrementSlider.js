@@ -445,6 +445,7 @@ const IncrementSliderBase = kind({
 
 	render: ({active,
 		'aria-hidden': ariaHidden,
+		ariaControlId,
 		backgroundProgress,
 		css,
 		decrementAriaLabel,
@@ -452,7 +453,6 @@ const IncrementSliderBase = kind({
 		decrementIcon,
 		disabled,
 		focused,
-		id,
 		incrementAriaLabel,
 		incrementDisabled,
 		incrementIcon,
@@ -487,7 +487,7 @@ const IncrementSliderBase = kind({
 		return (
 			<div aria-hidden={ariaHidden} {...rest}>
 				<IncrementSliderButton
-					aria-controls={!incrementDisabled ? id : null}
+					aria-controls={!incrementDisabled ? ariaControlId : null}
 					aria-label={decrementAriaLabel}
 					className={css.decrementButton}
 					disabled={decrementDisabled}
@@ -505,7 +505,7 @@ const IncrementSliderBase = kind({
 					css={css}
 					disabled={disabled}
 					focused={focused}
-					id={id}
+					id={ariaControlId}
 					knobStep={knobStep}
 					max={max}
 					min={min}
@@ -522,7 +522,7 @@ const IncrementSliderBase = kind({
 					value={value}
 				/>
 				<IncrementSliderButton
-					aria-controls={!decrementDisabled ? id : null}
+					aria-controls={!decrementDisabled ? ariaControlId : null}
 					aria-label={incrementAriaLabel}
 					className={css.incrementButton}
 					disabled={incrementDisabled}
@@ -551,7 +551,7 @@ const IncrementSliderBase = kind({
 const IncrementSliderDecorator = compose(
 	Pure,
 	Changeable,
-	IdProvider({generateProp: null, prefix: 's_'}),
+	IdProvider({generateProp: null, prefix: 's_', idProp: 'ariaControlId'}),
 	SliderBehaviorDecorator({emitSpotlightEvents: 'onSpotlightDirection'}),
 	Skinnable,
 	Slottable({slots: ['knob']})

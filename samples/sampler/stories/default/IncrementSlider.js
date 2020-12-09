@@ -16,6 +16,7 @@ storiesOf('Agate', module)
 		'IncrementSlider',
 		() => (
 			<IncrementSlider
+				id="test"
 				active={boolean('active', Config)}
 				decrementIcon={select('decrementIcon', decrementIcons, Config)}
 				disabled={boolean('disabled', Config)}
