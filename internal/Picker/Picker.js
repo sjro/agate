@@ -79,6 +79,24 @@ const SlideArranger = ({amount = 100, direction}) => ({
 	])
 });
 
+// const SlideArranger = ({amount = 100, direction}) => ({
+// 	enter: (config) => {
+// 		const {node} = config;
+// 		console.log('enter', node.dataset.index, config);
+// 		return node.animate({});
+// 	},
+// 	leave: (config) => {
+// 		const {node} = config;
+// 		console.log('leave', node.dataset.index, config);
+// 		return node.animate({});
+// 	},
+// 	stay: (config) => {
+// 		const {node} = config;
+// 		console.log('stay', node.dataset.index, config);
+// 		return node.animate({});
+// 	}
+// });
+
 /**
  * The base component for {@link agate/internal/Picker.Picker}.
  *
@@ -568,6 +586,7 @@ const PickerBase = kind({
 					aria-disabled={disabled}
 					aria-label={incrementAriaLabel}
 					className={css.item}
+					data-index={i}
 					disabled={disabled}
 					onClick={i < currentItemIndex && handleDecrement || i > currentItemIndex && handleIncrement || null}
 					onSpotlightDisappear={onSpotlightDisappear}
