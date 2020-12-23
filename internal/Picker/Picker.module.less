@@ -5,6 +5,7 @@
 @import "../../styles/skin.less";
 
 .picker {
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	overflow: hidden;
@@ -109,13 +110,14 @@
 
 		.item {
 			position: relative;
+			transition: translate 2s;
 		}
 
-		> .item:nth-child(2) {
-			// the second element in the ViewManager should be offset by the container height
-			// so the transition can position two relative views next to each other safely.
-			top: -100%;
-		}
+		// > .item:nth-child(2) {
+		// 	// the second element in the ViewManager should be offset by the container height
+		// 	// so the transition can position two relative views next to each other safely.
+		// 	top: -100%;
+		// }
 	}
 
 }
